@@ -6,7 +6,6 @@
     },
     "extends": [
         "eslint:recommended",
-        "prettier",
         "plugin:react/recommended",
         "plugin:prettier/recommended"
     ],
@@ -18,7 +17,8 @@
         "sourceType": "module"
     },
     "plugins": [
-        "react"
+        "react",
+        "prettier"
     ],
     "rules": {
         "linebreak-style": [
