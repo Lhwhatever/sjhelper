@@ -24,6 +24,8 @@ import commonCls from '../../commonClasses'
 import Emoji from '../../emoji'
 import { HExpander } from '../../structs'
 import SimplePlayerStatus from './simplePlayerStatus'
+import FloatingGameHistory from '../profile/floating/gameHistory'
+import FixedGameHistory from '../profile/fixed/gameHistory'
 
 const useStyles = makeStyles((theme) => ({
     profileNameField: {
@@ -165,9 +167,10 @@ const ProfileDisplay = ({ uuid, profile, setProfileName, deleteProfile, ...props
             <Dialog open={historyDialogOpen} onClose={handleCloseHistoryDialog}>
                 <DialogTitle>Game History for {profile.name}</DialogTitle>
                 <DialogContent>
-                    {/*React.createElement(profile.partnership === 'floating' ? FloatingGameHistory : FixedGameHistory,
-                    { profile, tableSize: 'small' })
-        */}
+                    {React.createElement(profile.partnership === 'floating' ? FloatingGameHistory : FixedGameHistory, {
+                        profile,
+                        tableSize: 'small',
+                    })}
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleCloseHistoryDialog} color="primary">
