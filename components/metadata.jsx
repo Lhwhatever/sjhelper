@@ -6,6 +6,7 @@ export default function Metadata({ pageTitle }) {
     return (
         <Head>
             <title>{pageTitle || 'Shengji Helper'}</title>
+            <link rel="icon" type="image/png" href="/favicon.png" />
             <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
         </Head>
     )
