@@ -10,8 +10,7 @@
 
 # next.js
 /.next/
-/out/**
-!/out/.nojekyll
+/out/
 
 # production
 /build
@@ -32,3 +31,6 @@ yarn-error.log*
 
 # IDEs
 .vscode/
+
+# Deployment
+.vercel
