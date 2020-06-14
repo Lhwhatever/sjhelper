@@ -8,12 +8,13 @@ const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
         alignItems: 'center',
+        justifyContent: 'center',
         flexGrow: 1,
         height: '100vh',
     },
     linkCol: {
-        flexGrow: 1,
         display: 'flex',
+        flexShrink: 1,
         flexDirection: 'column',
         alignItems: 'center',
     },
@@ -32,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     imageContainer: {
-        flexGrow: 3,
+        flexShrink: 3,
     },
     image: {
         maxWidth: '100%',
@@ -59,7 +60,9 @@ const Links = ({ compact }) => {
 
     return (
         <Box className={compact ? classes.btnLinksCompact : classes.btnLinks}>
-            <Button variant="outlined">Calculator</Button>
+            <ButtonLink variant="outlined" to="/calc">
+                Calculator
+            </ButtonLink>
             <ButtonLink variant="outlined" to="/planner">
                 Game Planner
             </ButtonLink>

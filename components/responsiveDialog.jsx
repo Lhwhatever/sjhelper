@@ -6,12 +6,12 @@ const ResponsiveDialog = ({ component, ...props }) => {
     const mobile = useMediaQuery(useTheme().breakpoints.down('xs'))
     return React.createElement(component || Dialog, {
         fullScreen: mobile,
-        ...props
+        ...props,
     })
 }
 
 ResponsiveDialog.propTypes = {
-    component: PropTypes.elementType
+    component: PropTypes.elementType,
 }
 
 export default ResponsiveDialog

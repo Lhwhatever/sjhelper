@@ -12,8 +12,8 @@ const NextComposed = React.forwardRef(function NextCompose({ as, href, ...props 
 })
 
 NextComposed.propTypes = {
-    as: PropTypes.oneOf([PropTypes.string, PropTypes.object]),
-    href: PropTypes.oneOf([PropTypes.string, PropTypes.object]),
+    as: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+    href: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
 }
 
 const Link = ({ to, innerRef, ...props }) => {
