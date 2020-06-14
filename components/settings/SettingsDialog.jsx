@@ -1,7 +1,5 @@
 import {
     Box,
-    Button,
-    DialogActions,
     DialogContent,
     DialogTitle,
     Grid,
@@ -9,10 +7,13 @@ import {
     MenuItem,
     TextField,
     Typography,
+    DialogActions,
+    Button,
 } from '@material-ui/core'
 import PropTypes from 'prop-types'
-import React from 'react'
+import React, { useContext } from 'react'
 import ResponsiveDialog from '../responsiveDialog'
+import SettingsContext from './SettingsContext'
 
 const useStyles = makeStyles({
     settingsGrid: {
@@ -25,6 +26,7 @@ const useStyles = makeStyles({
 
 const SettingsDialog = ({ open, onClose, onSettingsUpdate }) => {
     const classes = useStyles()
+    const settings = useContext(SettingsContext)
 
     const handleDisplayAceChange = (event) => {
         onSettingsUpdate('displayAce', event.target.value)
@@ -46,7 +48,7 @@ const SettingsDialog = ({ open, onClose, onSettingsUpdate }) => {
                             variant="outlined"
                             size="small"
                             fullWidth
-                            defaultValue="1"
+                            value={settings.displayAce}
                             onChange={handleDisplayAceChange}
                         >
                             <MenuItem value="1">11, 12, 13, 1</MenuItem>

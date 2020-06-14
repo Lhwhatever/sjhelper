@@ -1,8 +1,8 @@
 import { Container, makeStyles } from '@material-ui/core'
 import PropTypes from 'prop-types'
-import React, { useReducer } from 'react'
+import React, { useReducer, useEffect } from 'react'
 import Header from './header'
-import SettingsContext from './settings/SettingsContext'
+import SettingsContext, { settingsLocalStorageKey } from './settings/SettingsContext'
 
 const useStyles = makeStyles({
     root: {
@@ -26,6 +26,8 @@ const Layout = ({ children, header, headerProps, ...props }) => {
     const [settings, settingsDispatch] = useReducer(
         (state, action) => {
             switch (action.type) {
+                case 'init':
+                    return action.value
                 case 'update':
                     return { ...state, [action.key]: action.value }
                 default:
@@ -34,6 +36,15 @@ const Layout = ({ children, header, headerProps, ...props }) => {
         },
         { displayAce: '1' }
     )
+
+    useEffect(() => {
+        const savedSettings = window.localStorage.getItem(settingsLocalStorageKey)
+        if (savedSettings) settingsDispatch({ type: 'init', value: JSON.parse(savedSettings) })
+    }, [])
+
+    useEffect(() => {
+        window.localStorage.setItem(settingsLocalStorageKey, JSON.stringify(settings))
+    }, [settings])
 
     const handleSettingsUpdate = (key, value) => settingsDispatch({ type: 'update', key, value })
 
