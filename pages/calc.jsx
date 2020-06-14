@@ -1,11 +1,13 @@
-import { makeStyles } from '@material-ui/styles'
-import React, { useState, useReducer, useEffect } from 'react'
-import { loadProfiles, saveProfiles } from '../helper/profiles'
-import Layout from '../components/layout'
-import { Typography, Button, Box } from '@material-ui/core'
+import { Box, Button, Typography } from '@material-ui/core'
 import { Add, Delete } from '@material-ui/icons'
+import { makeStyles } from '@material-ui/styles'
+import React, { useEffect, useReducer, useState } from 'react'
+import { v4 as uuidv4 } from 'uuid'
 import DeleteDialog from '../components/deleteDialog'
+import Layout from '../components/layout'
+import CreateProfileDialog from '../components/subpages/calc/createProfileDialog'
 import ProfileDisplay from '../components/subpages/calc/profileDisplay'
+import { loadProfiles, saveProfiles } from '../helper/profiles'
 
 const useStyles = makeStyles((theme) => ({
     btn: {
@@ -76,6 +78,15 @@ export default function CalculatorPage() {
                 Delete All
             </Button>
 
+            <CreateProfileDialog
+                open={createProfileWizardOpen}
+                setOpen={setCreateProfileWizardOpen}
+                onFinish={(newProfile) => {
+                    const uuid = uuidv4()
+                    newProfile.leader = -1
+                    profileDispatch({ type: 'createProfile', key: uuid, value: newProfile })
+                }}
+            />
             <DeleteDialog
                 open={deleteProfileDialogOpen}
                 setOpen={setDeleteProfileDialogOpen}

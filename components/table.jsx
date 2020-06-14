@@ -52,7 +52,7 @@ const HighlightableRow = ({ className, ...props }) => {
 }
 
 HighlightableRow.propTypes = {
-    className: PropTypes.oneOf([PropTypes.string, PropTypes.object]),
+    className: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     highlight: PropTypes.any,
 }
 
