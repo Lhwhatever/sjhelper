@@ -4,7 +4,9 @@ This is a React app targeted to help users when playing the Chinese card game Sh
 
 The goal is to explain various game configurations, track results and advancements, as well as explain the game.
 
-This is a port of an older version of my project [lhwhatever/shengji-helper](https://github.com/Lhwhatever/shengji-helper) to NextJS. You can view the production version [here](https://sjhelper.lhwhatever.vercel.app/). The port is currently not complete.
+This is a port of an older version of my project [lhwhatever/shengji-helper](https://github.com/Lhwhatever/shengji-helper) to NextJS. You can view the production version [here](https://sjhelper.lhwhatever.vercel.app/).
+
+The application is feature-complete, but I may return to add additional features in the future.
 
 ## Planner (/planner)
 
