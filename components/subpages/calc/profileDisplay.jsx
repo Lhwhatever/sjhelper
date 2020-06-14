@@ -26,6 +26,7 @@ import { HExpander } from '../../structs'
 import SimplePlayerStatus from './simplePlayerStatus'
 import FloatingGameHistory from '../profile/floating/gameHistory'
 import FixedGameHistory from '../profile/fixed/gameHistory'
+import { ButtonLink } from '../../link'
 
 const useStyles = makeStyles((theme) => ({
     profileNameField: {
@@ -58,11 +59,6 @@ const ProfileDisplay = ({ uuid, profile, setProfileName, deleteProfile, ...props
         setProfileName(profileNameFieldRef.current.value)
         setProfileNameEditMode(false)
     }
-
-    const useProfile = () => 0
-    /*navigate('/profile', {
-            state: { uuid },
-        })*/
 
     return (
         <Card {...props}>
@@ -154,9 +150,9 @@ const ProfileDisplay = ({ uuid, profile, setProfileName, deleteProfile, ...props
             </CardContent>
             <CardActions>
                 <HExpander />
-                <Button onClick={useProfile} color="primary" variant="outlined">
+                <ButtonLink color="primary" variant="outlined" to={`/profiles/${uuid}`}>
                     Enter
-                </Button>
+                </ButtonLink>
                 <Button onClick={() => openHistoryDialog(true)} color="primary">
                     History
                 </Button>

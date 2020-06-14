@@ -7,12 +7,6 @@ import SettingsDialog from './settings/SettingsDialog'
 import { Link } from './link'
 
 const useStyles = makeStyles({
-    root: {
-        flexGrow: 1,
-    },
-    appBar: {
-        marginBottom: '1rem',
-    },
     settingsBtn: {
         position: 'relative',
     },
@@ -32,24 +26,24 @@ const Header = ({ children, onSettingsUpdate }) => {
 
     return (
         <>
-            <div className={classes.root}>
-                <AppBar position="static" className={classes.appBar} color="primary">
-                    <Toolbar>
+            <AppBar position="static" color="primary">
+                <Toolbar>
+                    {children || (
                         <Link className={classes.headerLink} to="/">
-                            {children || <Typography variant="h6">Shengji Helper</Typography>}
+                            <Typography variant="h6">Shengji Helper</Typography>
                         </Link>
-                        <Box className={classes.hExpand} />
-                        <IconButton
-                            color="inherit"
-                            size="small"
-                            className={classes.settingsBtn}
-                            onClick={() => openSettingsDialog(true)}
-                        >
-                            <Settings />
-                        </IconButton>
-                    </Toolbar>
-                </AppBar>
-            </div>
+                    )}
+                    <Box className={classes.hExpand} />
+                    <IconButton
+                        color="inherit"
+                        size="small"
+                        className={classes.settingsBtn}
+                        onClick={() => openSettingsDialog(true)}
+                    >
+                        <Settings />
+                    </IconButton>
+                </Toolbar>
+            </AppBar>
             <SettingsDialog
                 open={settingsDialogOpen}
                 onClose={handleCloseSettingsDialog}

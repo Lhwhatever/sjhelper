@@ -23,9 +23,10 @@ export default function CalculatorPage() {
     const [profiles, profileDispatch] = useReducer((state, action) => {
         switch (action.type) {
             case 'setProfileName':
-                state[action.key].name = action.value
-                state[action.key].lastUsed = new Date()
-                return state
+                return {
+                    ...state,
+                    [action.key]: { ...state[action.key], name: action.value, lastUsed: new Date() },
+                }
             case 'createProfile':
                 return {
                     ...state,
@@ -55,7 +56,7 @@ export default function CalculatorPage() {
     const profileEntries = Object.entries(profiles)
 
     return (
-        <Layout>
+        <Layout contentDisplay="block">
             <Typography variant="h4">Calculator</Typography>
             <Typography variant="body2">Select a profile below: {profiles.length}</Typography>
             <Button

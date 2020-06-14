@@ -99,7 +99,7 @@ DeckPlannerRow.propTypes = {
 }
 
 const DeckPlanner = ({ config, setConfig, numOfPlayers, error, ...props }) => {
-    const classes = { ...commonCls(), ...useStyles(props) }
+    const classes = { ...commonCls(), ...useStyles() }
     const rowData = getRowData(numOfPlayers)
     const size = props.dense ? 'small' : 'medium'
 

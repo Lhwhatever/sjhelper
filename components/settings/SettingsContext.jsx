@@ -1,7 +1,7 @@
 import React from 'react'
 
 const SettingsContext = React.createContext({
-    displayAce: 'A'
+    displayAce: '1',
 })
 
 export default SettingsContext
