@@ -32,7 +32,7 @@ const Layout = ({ children, header, headerProps, ...props }) => {
                     throw `Unknown action type ${action.type}`
             }
         },
-        { displayAce: 'A' }
+        { displayAce: '1' }
     )
 
     const handleSettingsUpdate = (key, value) => settingsDispatch({ type: 'update', key, value })

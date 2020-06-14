@@ -132,6 +132,10 @@ const PlayerDetails = ({ profile, onNewRound, tableSize, onRedirect, ...props })
     const [victoryDialogOpen, setVictoryDialogOpen] = useState(false)
 
     const handleGameFinish = () => {
+        setVictoryDialogOpen(true)
+    }
+
+    const handleVictoryDialogClose = () => {
         onNewRound({
             score,
             leader,
@@ -140,11 +144,6 @@ const PlayerDetails = ({ profile, onNewRound, tableSize, onRedirect, ...props })
             newPlayerLevels: newLevels,
             victors,
         })
-
-        setVictoryDialogOpen(true)
-    }
-
-    const handleVictoryDialogClose = () => {
         setVictoryDialogOpen(false)
         onRedirect()
     }
@@ -310,7 +309,7 @@ const PlayerDetails = ({ profile, onNewRound, tableSize, onRedirect, ...props })
                 {victors.length === 1 && (
                     <DialogContent>
                         <Typography variant="body1">A player has won at the final level, ending the game.</Typography>
-                        <Typography variant="body1">The victor is {profile.players[victors[0]].name}.</Typography>
+                        <Typography variant="body1">{profile.players[victors[0]].name} is the victor!</Typography>
                     </DialogContent>
                 )}
                 {victors.length > 1 && (
@@ -321,7 +320,7 @@ const PlayerDetails = ({ profile, onNewRound, tableSize, onRedirect, ...props })
                         <Typography variant="body1">
                             The victors are{' '}
                             {formatList(victors.slice(0, -1).map((i) => profile.players[i].name)).join()} and{' '}
-                            {profile.players[victors[victors.length - 1]].name}.
+                            {profile.players[victors[victors.length - 1]].name}!
                         </Typography>
                     </DialogContent>
                 )}

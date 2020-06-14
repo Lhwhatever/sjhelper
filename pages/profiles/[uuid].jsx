@@ -52,38 +52,40 @@ const ProfileHeader = ({ profile, onProfileNameChange, ...props }) => {
 
     return (
         <Header {...props}>
-            <ButtonLink color="inherit" startIcon={<ChevronLeft />} to="/calc">
-                Back
-            </ButtonLink>
-            <Box mx={1} />
-            {nameField === null && (
-                <>
-                    <Typography variant="h6">{profile.name}</Typography>
-                    <IconButton aria-label="edit" color="inherit" onClick={handleStartEdit}>
-                        <Edit />
-                    </IconButton>
-                </>
-            )}
-            {nameField === null || (
-                <ProfileNameField
-                    variant="outlined"
-                    size="small"
-                    label="Profile Name"
-                    value={nameField}
-                    InputProps={{
-                        endAdornment: (
-                            <IconButton size="small" color="inherit" onClick={handleEndEdit}>
-                                <Done size="inherit" />
-                            </IconButton>
-                        ),
-                    }}
-                    onChange={handleNameChange}
-                />
-            )}
-            <Box ml={1} />
-            <Typography variant="body2">
-                ({profile.config.decks} decks, {profile.players.length} players)
-            </Typography>
+            <>
+                <ButtonLink color="inherit" startIcon={<ChevronLeft />} to="/calc">
+                    Back
+                </ButtonLink>
+                <Box mx={1} />
+                {nameField === null && (
+                    <>
+                        <Typography variant="h6">{profile.name}</Typography>
+                        <IconButton aria-label="edit" color="inherit" onClick={handleStartEdit}>
+                            <Edit />
+                        </IconButton>
+                    </>
+                )}
+                {nameField === null || (
+                    <ProfileNameField
+                        variant="outlined"
+                        size="small"
+                        label="Profile Name"
+                        value={nameField}
+                        InputProps={{
+                            endAdornment: (
+                                <IconButton size="small" color="inherit" onClick={handleEndEdit}>
+                                    <Done size="inherit" />
+                                </IconButton>
+                            ),
+                        }}
+                        onChange={handleNameChange}
+                    />
+                )}
+                <Box ml={1} />
+                <Typography variant="body2">
+                    ({profile.config.decks} decks, {profile.players.length} players)
+                </Typography>
+            </>
         </Header>
     )
 }

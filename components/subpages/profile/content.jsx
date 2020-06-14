@@ -4,6 +4,8 @@ import { ProfilePropType } from '../../../helper/profiles'
 import { makeStyles, Paper, Box, Typography, TextField, MenuItem, Button } from '@material-ui/core'
 import FloatingGameHistory from './floating/gameHistory'
 import FloatingPlayerDetails from './floating/playerDetails'
+import FixedGameHistory from './fixed/gameHistory'
+import FixedPlayerDetails from './fixed/playerDetails'
 import { useRouter } from 'next/router'
 import commonCls from '../../commonClasses'
 
@@ -53,17 +55,22 @@ const ProfileContent = ({ profile, onUpdate }) => {
 
     return (
         <>
-            {React.createElement(FloatingPlayerDetails, {
-                profile,
-                onNewRound: handleNewRound,
-                mb: 2,
-                tableSize: 'small',
-                onRedirect: handleRedirect,
-            })}
+            {profile.victors.length > 0 ||
+                React.createElement(profile.partnership === 'floating' ? FloatingPlayerDetails : FixedPlayerDetails, {
+                    profile,
+                    onNewRound: handleNewRound,
+                    mb: 2,
+                    tableSize: 'small',
+                    onRedirect: handleRedirect,
+                })}
             <Paper>
                 <Box p={2}>
                     <Typography variant="h5">Game History</Typography>
-                    {React.createElement(FloatingGameHistory, { profile, tableSize: 'small', onRevert: handleRevert })}
+                    {React.createElement(profile.partnership === 'floating' ? FloatingGameHistory : FixedGameHistory, {
+                        profile,
+                        tableSize: 'small',
+                        onRevert: handleRevert,
+                    })}
                     <Box className={classes.hContainer} mt={2}>
                         <Box className={classes.hExpand} />
                         <TextField
